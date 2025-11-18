@@ -1,19 +1,19 @@
 // -------------------------------------------
-// Assignment Constructor
+// Assignment constructor
 // -------------------------------------------
 function Assignment(title, dueDate) {
     this.title = title;
     this.dueDate = dueDate;
 }
 
-// Method on Assignment prototype
+// Print a single assignment line (with indentation)
 Assignment.prototype.printAssignment = function () {
-    console.log(`Title: ${this.title}, Due Date: ${this.dueDate}`);
+    console.log(`   Title: ${this.title} | Due Date: ${this.dueDate}`);
 };
 
 
 // -------------------------------------------
-// Course Constructor
+// Course constructor
 // -------------------------------------------
 function Course(courseName, instructor, creditHours, assignments = []) {
     this.courseName = courseName;
@@ -22,25 +22,16 @@ function Course(courseName, instructor, creditHours, assignments = []) {
     this.assignments = assignments; // array of Assignment objects
 }
 
-// Method on Course prototype
+// Print course info + all assignments in the required format
 Course.prototype.courseInfo = function () {
-    console.log(`Course: ${this.courseName}`);
-    console.log(`Instructor: ${this.instructor}`);
-    console.log(`Credit Hours: ${this.creditHours}`);
-    console.log("Assignments:");
+    console.log(
+        `Course: ${this.courseName} | Instructor: ${this.instructor} | Credit Hours: ${this.creditHours}`
+    );
+    console.log("Assignments >>>");
     this.assignments.forEach(a => a.printAssignment());
 };
 
 
 // -------------------------------------------
-// Create objects (must match plainObjects.js output)
-// -------------------------------------------
+// Create object
 
-// Example objects — replace these with the original values from plainObjects.js
-const a1 = new Assignment("Homework 1", "2025-02-10");
-const a2 = new Assignment("Lab Report", "2025-02-14");
-
-const c1 = new Course("Data Structures", "Dr. Smith", 3, [a1, a2]);
-
-// Print output (must match plainObjects.js FORMAT exactly)
-c1.courseInfo();
